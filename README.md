@@ -1,6 +1,6 @@
-# EdgeSentry — Agentic RAG for Offline Edge AI Security
+# EdgeSentry —> Agentic RAG for Offline Edge AI Security
 
-> **An offline AI security system that remembers what it sees and answers questions about it — running entirely on a Raspberry Pi 5 + Hailo-8L. No cloud. No API costs.**
+> **An offline AI security system that remembers what it sees and answers questions about it, running entirely on a Raspberry Pi 5 + Hailo-8L. No cloud. No API costs.**
 
 EdgeSentry is the **v2 agentic layer** built on top of the
 [Pi5 Edge AI Security Monitor](#relationship-to-v1). The v1 system detects and
