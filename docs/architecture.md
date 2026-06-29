@@ -1,7 +1,7 @@
 # Architecture
 
 This document explains **how** EdgeSentry works and **why** each component was
-chosen. It is written for reviewers, collaborators, and your future self.
+chosen. It is written for reviewers and collaborators
 
 ---
 
