@@ -137,6 +137,3 @@ sudo systemctl enable --now edgesentry
 ```bash
 python scripts/benchmark.py
 ```
-
-This prints a markdown table of latencies you can paste into the README or show
-on screen in your YouTube video.
