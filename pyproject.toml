@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edgesentry"
+version = "2.0.0"
+description = "Offline agentic RAG security assistant on Raspberry Pi 5 + Hailo-8L"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [
+    {name = "Olawale Kabiru Balogun", email = "olawalebalogun283@gmail.com"},
+]
+keywords = [
+    "edge-ai", "rag", "agentic-ai", "raspberry-pi", "hailo",
+    "llm", "computer-vision", "iot", "yolov8",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Repository = "https://github.com/<you>/edgesentry"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

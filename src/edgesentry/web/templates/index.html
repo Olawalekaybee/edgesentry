@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>{{ title }}</h1>
+    <span id="llm-status" class="status">checking…</span>
+  </header>
+
+  <main class="grid">
+    <!-- Live feed (from v1) -->
+    <section class="panel feed">
+      <h2>Live Feed</h2>
+      <img id="live" src="/stream" alt="Live camera feed"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'feed-placeholder',textContent:'Live feed available when perception is running'}))" />
+    </section>
+
+    <!-- Ask EdgeSentry (v2) -->
+    <section class="panel chat">
+      <h2>Ask EdgeSentry</h2>
+      <div id="messages" class="messages"></div>
+      <div class="composer">
+        <input id="input" type="text"
+               placeholder="e.g. Has the same person shown up more than twice today?" />
+        <button id="send">Ask</button>
+      </div>
+      <div class="suggestions">
+        <button class="chip">Summarise unusual activity today</button>
+        <button class="chip">How many people entered the Front Gate in the last hour?</button>
+        <button class="chip">When was the back door last active?</button>
+      </div>
+    </section>
+
+    <!-- Recent events (v2) -->
+    <section class="panel events">
+      <h2>Recent Events</h2>
+      <table id="events">
+        <thead><tr><th>Time</th><th>Person</th><th>Zone</th><th>Kind</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

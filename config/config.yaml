@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# EdgeSentry configuration
+#
+# Secrets (tokens) live in `.env`, not here. This file holds non-secret,
+# checked-in defaults. Anything here can be overridden by environment variables
+# of the same name in UPPER_SNAKE_CASE (see src/edgesentry/config.py).
+# ─────────────────────────────────────────────────────────────────────────────
+
+app:
+  name: EdgeSentry
+  data_dir: ./data            # events DB, vector store, snapshots all live here
+
+# ── Perception (v1 vision layer on the Hailo NPU) ────────────────────────────
+perception:
+  camera_source: 0            # 0 = PiCamera2/USB; or a path/RTSP URL
+  detector_hef: ./models/yolov8n.hef
+  reid_hef: ./models/reid_resnet.hef
+  confidence_threshold: 0.45
+  zones_file: ./config/zones.json
+  # how often a still-present person re-triggers an event (seconds)
+  event_debounce_seconds: 30
+
+# ── Events (structured facts) ────────────────────────────────────────────────
+events:
+  db_path: ./data/events.sqlite
+  snapshot_dir: ./data/snapshots
+  keep_snapshots_days: 14
+
+# ── RAG (semantic memory) ────────────────────────────────────────────────────
+rag:
+  embed_model: sentence-transformers/all-MiniLM-L6-v2
+  vector_dir: ./data/chroma
+  collection: events
+  top_k: 6                    # how many memories to retrieve per query
+
+# ── Agent (local LLM) ────────────────────────────────────────────────────────
+agent:
+  # endpoint + model are read from .env (OLLAMA_HOST / OLLAMA_MODEL)
+  max_tool_iterations: 4      # max reasoning<->tool loops before answering
+  temperature: 0.2
+  # which tools the agent is allowed to call
+  enabled_tools: [search_events, query_logs, send_alert]
+
+# ── Tasks (scheduled agentic jobs) ───────────────────────────────────────────
+tasks:
+  journaler:
+    enabled: true
+    interval_minutes: 60      # summarise the last hour into long-term memory
+
+# ── Web dashboard ────────────────────────────────────────────────────────────
+web:
+  # host/port read from .env (WEB_HOST / WEB_PORT)
+  title: EdgeSentry — Offline AI Security

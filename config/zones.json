@@ -1,0 +1,13 @@
+{
+  "_comment": "Polygon zones in pixel coordinates of the camera frame. A detection counts as 'in' a zone when its bounding-box foot point falls inside the polygon. Carried over from v1.",
+  "zones": [
+    {
+      "name": "Front Gate",
+      "polygon": [[40, 300], [300, 300], [300, 470], [40, 470]]
+    },
+    {
+      "name": "Back Door",
+      "polygon": [[360, 280], [620, 280], [620, 470], [360, 470]]
+    }
+  ]
+}

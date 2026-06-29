@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# EdgeSentry dependencies
+#
+# Notes for Raspberry Pi 5 (aarch64):
+#  • The Hailo runtime (hailort / hailo-platform) is installed system-wide via
+#    the HailoRT .deb, NOT via pip. Create your venv with --system-site-packages
+#    so it is visible. It is intentionally NOT listed here.
+#  • Ollama is installed separately (see scripts/pull_llm.sh); we only talk to it
+#    over HTTP, so the Python side just needs `requests`.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# --- Core ---
+pydantic>=2.6
+PyYAML>=6.0
+python-dotenv>=1.0
+
+# --- Web / dashboard ---
+Flask>=3.0
+flask-cors>=4.0
+
+# --- RAG: embeddings + vector store ---
+sentence-transformers>=2.7      # MiniLM embedding model (CPU)
+chromadb>=0.5                   # local, file-based vector DB
+
+# --- Agent: talk to local Ollama LLM over HTTP ---
+requests>=2.31
+
+# --- Scheduling (hourly journaler) ---
+APScheduler>=3.10
+
+# --- Image handling for snapshots ---
+Pillow>=10.0
+numpy>=1.26
+
+# --- Dev / test (also used by CI) ---
+pytest>=8.0
+pytest-cov>=5.0

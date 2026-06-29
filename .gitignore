@@ -1,0 +1,38 @@
+# ── Secrets & local config ───────────────────────────────────────────────────
+.env
+
+# ── Runtime data (events DB, vector store, snapshots) ────────────────────────
+data/
+*.sqlite
+*.sqlite3
+*.db
+
+# ── Model weights (large; see models/README.md to obtain) ────────────────────
+models/*
+!models/README.md
+!models/.gitkeep
+*.hef
+*.onnx
+*.gguf
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Editor / OS ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+
+# ── Logs ───────────────────────────────────────────────────────────────────
+*.log
+docs/demo-script.md
+docs/benchmarks.md
+scripts/benchmarks.py
+scripts/seed_demo_data.py
